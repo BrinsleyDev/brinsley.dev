@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components"
+import { v4 as uuid } from "uuid"
+
+type Props = {
+    list: {
+        name: string
+        icon: string
+    }[]
+}
+
+const { list } = Astro.props
+
+const id = uuid()
+---
+
+<div
+    class="flex flex-col px-6 py-4 gap-4 border-t border-t-feature-500 bg-neutral-50 dark:bg-neutral-950"
+>
+    <button
+        data-id={id}
+        class="tech-list flex items-center justify-between text-neutral-900 dark:text-white"
+    >
+        <div class="flex gap-4 items-center">
+            <div
+                class="flex justify-center items-center w-10 h-10 rounded bg-feature-100 dark:bg-feature-900"
+            >
+                <Icon
+                    name="tabler:stack-2-filled"
+                    class="w-6 h-6 text-feature-600 dark:text-feature-300"
+                />
+            </div>
+
+            <h3 class="text-lg font-bold">Tech Stack</h3>
+        </div>
+
+        <Icon
+            name="mdi:chevron-down"
+            class="w-8 h-8"
+            id=`${id}-icon-down`
+        />
+
+        <Icon
+            name="mdi:chevron-up"
+            class="w-8 h-8"
+            id=`${id}-icon-up`
+        />
+    </button>
+
+    <div
+        id=`${id}-content`
+        class="hidden grid grid-cols-3 lg:grid-cols-4 gap-4 text-neutral-700 dark:text-neutral-300"
+    >
+        {
+            list.map(({ icon, name }) => (
+                <div class="flex gap-4 items-center">
+                    <Icon
+                        name={icon}
+                        class="mt-0.5 w-8 h-8"
+                    />
+                    <div class="flex flex-1">{name}</div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    import { processCollapsibles } from "../../utils/collapsibles"
+
+    document.addEventListener("astro:page-load", () =>
+        processCollapsibles(".tech-list"),
+    )
+</script>

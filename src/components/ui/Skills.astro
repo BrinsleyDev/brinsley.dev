@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components"
+import { v4 as uuid } from "uuid"
+
+type Props = {
+    list: string[]
+}
+
+const { list } = Astro.props
+
+const id = uuid()
+---
+
+<div
+    class="flex flex-col px-6 py-4 gap-4 border-t border-t-primary-500 bg-neutral-50 dark:bg-neutral-950"
+>
+    <button
+        data-id={id}
+        class="skill-list flex items-center justify-between text-neutral-900 dark:text-white"
+    >
+        <div class="flex gap-4 items-center">
+            <div
+                class="flex justify-center items-center w-10 h-10 rounded bg-primary-100 dark:bg-primary-900"
+            >
+                <Icon
+                    name="tabler:bulb-filled"
+                    class="w-6 h-6 text-primary-600 dark:text-primary-300"
+                />
+            </div>
+
+            <h3 class="text-lg font-bold">Key Skills</h3>
+        </div>
+
+        <Icon
+            name="mdi:chevron-down"
+            class="w-8 h-8"
+            id=`${id}-icon-down`
+        />
+
+        <Icon
+            name="mdi:chevron-up"
+            class="w-8 h-8"
+            id=`${id}-icon-up`
+        />
+    </button>
+
+    <ol
+        id=`${id}-content`
+        class="hidden grid grid-cols-3 lg:grid-cols-4 gap-4 text-neutral-700 dark:text-neutral-300"
+    >
+        {
+            list.map((item) => (
+                <li class="flex gap-4 items-start">
+                    <Icon
+                        name="mdi:send"
+                        class="mt-0.5 w-5 h-5 text-primary-400 dark:text-primary-500"
+                    />
+                    <div class="flex flex-1">{item}</div>
+                </li>
+            ))
+        }
+    </ol>
+</div>
+
+<script>
+    import { processCollapsibles } from "../../utils/collapsibles"
+
+    document.addEventListener("astro:page-load", () =>
+        processCollapsibles(".skill-list"),
+    )
+</script>

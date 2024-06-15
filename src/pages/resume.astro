@@ -1,0 +1,454 @@
+---
+import Timeline from "@components/ui/timeline/Timeline.astro"
+import Layout from "../layouts/Layout.astro"
+import TimelineItem from "@components/ui/timeline/TimelineItem.astro"
+import Experience from "@components/ui/Experience.astro"
+import TechList from "@components/ui/TechList.astro"
+import colors from "tailwindcss/colors"
+import Skills from "@components/ui/Skills.astro"
+
+export const prerender = true
+
+const borderColor = colors.neutral[500]
+---
+
+<Layout title="Resumé | Brinsley Blackwood">
+    <section>
+        <Timeline
+            company="Dronecloud"
+            href="//dronecloud.io"
+            description="Solutions to help plan and execute drone operations while keeping them safe and compliant."
+            tags={["Startup"]}
+        >
+            <TimelineItem
+                heading="Tech Lead"
+                dates={["January 2024", "Present"]}
+            >
+                Alongside my role as a Senior Software Engineer, I am also
+                responsible for guiding the technical direction of the
+                development team, ensuring that the team is working effectively
+                and efficiently, and that the software is being developed in a
+                way that is maintainable and scalable. I also work closely with
+                the Product team to ensure that the software is being developed
+                in a way that meets the needs of the business and our customers.
+            </TimelineItem>
+
+            <TimelineItem
+                heading="Senior Software Engineer"
+                dates={["March 2022", "January 2024"]}
+            >
+                As part of a small engineering team I design and develop
+                solutions to provide a platform for businesses to plan, carry
+                out and grow their drone operations. Part of this role also
+                involves guiding the design and feel of the software with the
+                goal of providing a modern, intuitive user experience.
+            </TimelineItem>
+        </Timeline>
+
+        <Skills
+            list={[
+                "Collaboration",
+                "Mentoring",
+                "Programming",
+                "UI design",
+                "UX development",
+                "Software architecture",
+                "Systems design",
+                "Prototyping",
+                "Release management",
+                "Line management",
+                "Hiring",
+                "Customer support",
+            ]}
+        />
+
+        <Experience
+            list={[
+                "Introduced new patterns to enable breaking down the PHP monlith in to smaller, manageable blocks of code",
+                "Defined common design language and best practices for the ongoing redesign of the platform",
+                "Designed and developed a service to decrypt and parse drone flight logs and extract the data to a common format to store in our database",
+                "Refined CI/CD strategy and standardised the approach used across all services",
+                "Produced various architectural diagrams to illustrate potential solutions expand the current platform to better suit future requirements",
+                "Worked closely with the PRoduct team to develop UI designs (using Figma) to enable engineers to get a feel for how features should be presented in the frontend",
+                "Lead the UX development of new features being introduced to the platform",
+            ]}
+        />
+
+        <TechList
+            list={[
+                {
+                    name: "Figma",
+                    icon: "logos:figma",
+                },
+                {
+                    name: "TypeScript",
+                    icon: "devicon:typescript",
+                },
+                {
+                    name: "React",
+                    icon: "logos:react",
+                },
+                {
+                    name: "Storybook",
+                    icon: "devicon:storybook",
+                },
+                {
+                    name: "PHP",
+                    icon: "devicon:php",
+                },
+                {
+                    name: "JavaScript",
+                    icon: "devicon:javascript",
+                },
+                {
+                    name: "MySQL",
+                    icon: "logos:mysql",
+                },
+                {
+                    name: "MongoDB",
+                    icon: "logos:mongodb-icon",
+                },
+                {
+                    name: "Node.js",
+                    icon: "logos:nodejs-icon",
+                },
+                {
+                    name: "Vitest",
+                    icon: "devicon:vitest",
+                },
+                {
+                    name: "AWS",
+                    icon: "logos:aws",
+                },
+                {
+                    name: "SST",
+                    icon: "logos:sst-icon",
+                },
+                {
+                    name: "Github Actions",
+                    icon: "devicon:githubactions",
+                },
+                {
+                    name: "Docker",
+                    icon: "logos:docker-icon",
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <Timeline
+            company="Seatfrog"
+            href="//seatfrog.com"
+            description="Making train travel cheaper and hassle free."
+            tags={["Established Startup"]}
+        >
+            <TimelineItem
+                heading="Software Engineer"
+                dates={["March 2021", "March 2022"]}
+            >
+                Working as part of a small, back-end team to design, develop and
+                maintain solutions to support mobile and web applications; built
+                using a serverless microservice architecture utilising a
+                multitude of languages and technologies.
+            </TimelineItem>
+        </Timeline>
+
+        <Skills
+            list={[
+                "Programming",
+                "Software architecture",
+                "Systems design",
+                "Prototyping",
+            ]}
+        />
+
+        <Experience
+            list={[
+                "Developed the APIs used to search for tickets and train times",
+                "Designed and developed the microservice responsible for the payment and booking process",
+                "Worked closely with the CTO to ensure tests written for older areas of the application were updated, with a view to introduce uinit and integration testing as part of the build pipeline",
+                "Participated in refactoring areas of a PHP monolith to enable the extracting of various components in to separate microservices",
+                "Evaluated Infrastructure as Code (IaC) tools with a view to streamline the development process and make it more consistent across services",
+            ]}
+        />
+
+        <TechList
+            list={[
+                {
+                    name: "JavaScript",
+                    icon: "devicon:javascript",
+                },
+                {
+                    name: "TypeScript",
+                    icon: "devicon:typescript",
+                },
+                {
+                    name: "Node.js",
+                    icon: "logos:nodejs-icon",
+                },
+                {
+                    name: "PHP",
+                    icon: "devicon:php",
+                },
+                {
+                    name: "MySQL",
+                    icon: "logos:mysql",
+                },
+                {
+                    name: "C#",
+                    icon: "devicon:csharp",
+                },
+                {
+                    name: "AWS",
+                    icon: "logos:aws",
+                },
+                {
+                    name: "SST",
+                    icon: "logos:sst-icon",
+                },
+                {
+                    name: "Serverless",
+                    icon: "logos:serverless",
+                },
+                {
+                    name: "Github Actions",
+                    icon: "devicon:githubactions",
+                },
+                {
+                    name: "Docker",
+                    icon: "logos:docker-icon",
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <Timeline
+            company="Switch Studios"
+            href="//switchstudios.co.uk"
+            description="Best in class table games for online casinos."
+            tags={["Startup", "Founding Engineer"]}
+        >
+            <TimelineItem
+                heading="Development Team Lead"
+                dates={["June 2019", "March 2021"]}
+            >
+                Managing a small team of developers and providing leadership to
+                cross-functional teams - alongside my previous role as a Senior
+                Developer within those teams. Supporting the professional
+                (skills/knowledge) and personal development of other developers
+                and providing feedback to inform the strategic direction of the
+                development team as a whole, as well as the Studio.
+            </TimelineItem>
+
+            <TimelineItem
+                heading="Senior Software Developer"
+                dates={["June 2018", "June 2019"]}
+            >
+                Supporting development of products across multiple
+                cross-functional teams and other technical aspects of the wider
+                business; including some Project Management/Product Ownership
+                responsibilities to aid in the estimation of realistic delivery
+                timelines. In this role I also became the primary point of
+                contact for resolving issues with various external services and
+                frameworks, building good relationships with other teams and
+                companies around the world.
+            </TimelineItem>
+
+            <TimelineItem
+                heading="Software Developer"
+                dates={["March 2017", "June 2018"]}
+            >
+                As a founding member of the Studio, I helped define and develop
+                the TypeScript framework and methodologies upon which all games
+                have since been built on, as well as design and develop the
+                games themselves.
+            </TimelineItem>
+        </Timeline>
+
+        <Skills
+            list={[
+                "Collaboration",
+                "Mentoring",
+                "Building teams",
+                "Game design",
+                "Programming",
+                "UI design",
+                "UX development",
+                "Software architecture",
+                "Systems design",
+                "Prototyping",
+                "Release management",
+                "Project management",
+                "Line management",
+                "Hiring",
+                "Convention exhibitor",
+            ]}
+        />
+
+        <Experience
+            list={[
+                "Developed premium roulette games that were top-grossing products for vendors to which they were licensed",
+                "Designed a modular Blackjack framework that allowed a team of 4 (2 engineers, 1 artist, 1 QA) to develop 7 Blackjack games simultaneously",
+                "Profiled games running on low-end mobile devices to debug and isolate performance bottlenecks",
+                "Built tools to automate the process of extracting game translations to be send to external translation teams and processing those translations in to game-ready resources",
+                "Worked with other Leads to create 3 high performing, cross-functional teams working across 4 different product lines",
+                "Lead the development of a commin UI across all products with heavy emphasis on UX",
+                "Worked closely with Art Lead to refine internal processes and ensure UX was considered at the design and prototyping stage of the development process",
+                "Collaborated with other members of the senior leadership team and other external teams and stakeholders to ensure all deadlines were met and timelines adhered to",
+                "Alongside our Head of Development, defined the technical strategy for various internal projects, tools and core codebases",
+                "Mentored several junior engineers who would soon come to be key members of the development team, contrubuting to major projects",
+                "Cultivated long-lasting relationships with teams and individuals from all over the global business",
+                "Developed a prototype framework for QA testers to write automated tests for our games",
+            ]}
+        />
+
+        <TechList
+            list={[
+                {
+                    name: "JavaScript",
+                    icon: "devicon:javascript",
+                },
+                {
+                    name: "TypeScript",
+                    icon: "devicon:typescript",
+                },
+                {
+                    name: "Node.js",
+                    icon: "logos:nodejs-icon",
+                },
+                {
+                    name: "PixiJS",
+                    icon: "logos:pixijs",
+                },
+                {
+                    name: "Gulp.js",
+                    icon: "logos:gulp",
+                },
+                {
+                    name: "C#",
+                    icon: "devicon:csharp",
+                },
+                {
+                    name: "SQL Server",
+                    icon: "tabler:sql",
+                },
+                {
+                    name: "TeamCity",
+                    icon: "logos:teamcity",
+                },
+                {
+                    name: "Jenkins",
+                    icon: "devicon:jenkins",
+                },
+                {
+                    name: "Jest",
+                    icon: "logos:jest",
+                },
+                {
+                    name: "Browserstack",
+                    icon: "devicon:browserstack",
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <Timeline
+            company="Sliding Pixel"
+            description="Innovative free-to-play games for mobile and web."
+            tags={["Startup", "Live Service", "Dissolved"]}
+        >
+            <TimelineItem
+                heading="Software Engineer"
+                dates={["August 2011", "March 2017"]}
+            >
+                As part of a small team I developed and maintained games
+                released to web (Facebook Canvas, Kongregate, Plinga), Android
+                and iOS using Flash/ActionScript 3 and Unity (with C#).
+                Contributing to game design, balancing and providing general
+                creative feedback alongside the typical development of the front
+                and back ends.
+            </TimelineItem>
+        </Timeline>
+
+        <Skills
+            list={[
+                "Collaboration",
+                "Game design",
+                "Programming",
+                "Software architecture",
+                "Systems design",
+                "Prototyping",
+                "Release management",
+                "Customer support",
+                "Convention exhibitor",
+            ]}
+        />
+
+        <Experience
+            list={[
+                "Designed and implemented gameplay systems used across multiple games from end-to-end, including: database design, server side logic/validation, client request/response handling",
+                "Developed a framework to enable our games' UI to scale across devices and behave responsively",
+                "Developed and maintained the foundation of the multiplayer infrastructure used by all games developed, catering for both synchronous and asynchronous communication – dependent on the game client requirements",
+                "Developed a routing strategy that allowed users to find other users and matches across server instances",
+                "Collaborated with a backend engineer to design and implement server-driven AI for a number of the products in development",
+                "Contributed to econmoy and game balancing",
+                "Released games that developed small, dedicated fanbases",
+            ]}
+        />
+
+        <TechList
+            list={[
+                {
+                    name: "PHP",
+                    icon: "devicon:php",
+                },
+                {
+                    name: "MySQL",
+                    icon: "logos:mysql",
+                },
+                {
+                    name: "Couchbase",
+                    icon: "logos:couchbase",
+                },
+                {
+                    name: "Node.js",
+                    icon: "logos:nodejs-icon",
+                },
+                {
+                    name: "Unity",
+                    icon: "devicon:unity",
+                },
+                {
+                    name: "C#",
+                    icon: "devicon:csharp",
+                },
+                {
+                    name: "JavaScript",
+                    icon: "devicon:javascript",
+                },
+                {
+                    name: "Adobe Animate (Flash)",
+                    icon: "logos:adobe-animate",
+                },
+                {
+                    name: "Java",
+                    icon: "devicon:java",
+                },
+                {
+                    name: "Redis",
+                    icon: "devicon:redis",
+                },
+            ]}
+        />
+    </section>
+</Layout>
+
+<style define:vars={{ borderColor }}>
+    section {
+        padding: 2rem 1.5rem;
+        border-bottom: 1px solid var(--borderColor);
+    }
+</style>

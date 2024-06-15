@@ -1,0 +1,33 @@
+---
+type Props = {
+    heading: string
+    dates: [string, string]
+}
+
+const { heading, dates } = Astro.props
+---
+
+<div class="flex gap-4 items-center text-neutral-950 dark:text-neutral-50">
+    <div
+        class="-ml-2 w-4 h-4 rounded-full border border-white bg-neutral-400 dark:border-neutral-700 dark:bg-primary-400"
+    >
+    </div>
+
+    <div
+        class="flex flex-col flex-1 p-4 gap-4 border rounded-lg shadow-sm bg-neutral-50 border-neutral-400 dark:bg-neutral-950 dark:border-primary-400"
+    >
+        <div>
+            <div class="text-lg font-semibold text-neutral-900 dark:text-white">
+                {heading}
+            </div>
+
+            <div class="text-sm font-normal opacity-60">
+                {dates[0]} - {dates[1]}
+            </div>
+        </div>
+
+        <p>
+            <slot />
+        </p>
+    </div>
+</div>

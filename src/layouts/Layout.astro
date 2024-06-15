@@ -1,0 +1,79 @@
+---
+import Footer from "@components/layout/Footer.astro"
+import Header from "@components/layout/Header.astro"
+import { ViewTransitions } from "astro:transitions"
+
+interface Props {
+    title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html
+    lang="en"
+    class="dark"
+>
+    <head>
+        <ViewTransitions fallback="swap" />
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Brinsley Blackwood, Software Engineer"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/logo.svg"
+        />
+        <meta
+            name="generator"
+            content={Astro.generator}
+        />
+        <title>{title}</title>
+    </head>
+
+    <body class="bg-white dark:bg-neutral-975 flex flex-col">
+        <Header />
+
+        <div class="flex flex-col flex-1">
+            <slot />
+        </div>
+
+        <Footer />
+
+        <style is:global>
+            html {
+                font-family: system-ui, sans-serif;
+            }
+
+            html,
+            body {
+                height: 100%;
+            }
+
+            @media screen and (max-width: 768px) {
+                html {
+                    font-size: 14pt;
+                }
+            }
+
+            code {
+                font-family:
+                    Menlo,
+                    Monaco,
+                    Lucida Console,
+                    Liberation Mono,
+                    DejaVu Sans Mono,
+                    Bitstream Vera Sans Mono,
+                    Courier New,
+                    monospace;
+            }
+        </style>
+    </body>
+</html>

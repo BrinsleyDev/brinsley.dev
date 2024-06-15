@@ -1,0 +1,67 @@
+---
+import { Icon } from "astro-icon/components"
+import { twMerge, type ClassNameValue } from "tailwind-merge"
+
+interface Props {
+    text: string
+    variant?: keyof typeof variants
+    icon?: Parameters<typeof Icon>[0]["name"]
+    iconSize?: number
+    class?: ClassNameValue
+    href?: string
+}
+
+const {
+    href,
+    text,
+    icon,
+    iconSize = 24,
+    variant = "primary",
+    class: className,
+} = Astro.props
+
+const classes = [
+    "flex px-4 py-2 gap-2 items-center justify-center rounded-full border",
+]
+
+const variants = {
+    primary:
+        "bg-primary-700 border-primary-700 text-white hover:bg-transparent hover:border-primary-600 hover:text-primary-600",
+    secondary:
+        "border-neutral-600 text-neutral-600 hover:border-neutral-600 hover:text-primary-600",
+}
+
+const buttonClasses = twMerge(
+    classes,
+    variants[variant],
+    !!href && "max-w-min",
+    className,
+)
+---
+
+{
+    !!href ? (
+        <a
+            href={href}
+            class={buttonClasses}
+        >
+            {text}
+            {!!icon && (
+                <Icon
+                    name={icon}
+                    size={iconSize}
+                />
+            )}
+        </a>
+    ) : (
+        <button class={buttonClasses}>
+            {text}
+            {!!icon && (
+                <Icon
+                    name={icon}
+                    size={iconSize}
+                />
+            )}
+        </button>
+    )
+}

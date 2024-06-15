@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components"
+import { colors } from "../../utils/tailwind"
+
+const text = colors.neutral[400]
+const textHover = colors.neutral[50]
+const bgHover = colors.neutral[600]
+---
+
+<footer
+    class="shadow bg-primary-950 dark:bg-primary-975 dark:text-neutral-100 p-4 md:flex sm:p-6 xl:p-8 sm:items-center sm:justify-between antialiased"
+>
+    <p
+        class="mb-4 text-sm text-center text-neutral-500 dark:text-neutral-400 sm:mb-0"
+    >
+    </p>
+
+    <div class="flex justify-center items-center gap-1">
+        <a
+            href="/contact"
+            aria-label="COntact"
+        >
+            <Icon name="mdi:message-outline">
+                <span class="sr-only">Contact</span>
+            </Icon>
+        </a>
+
+        <a
+            href="//github.com/brinsleydev"
+            aria-label="Github"
+        >
+            <Icon name="mdi:github">
+                <span class="sr-only">Github</span>
+            </Icon>
+        </a>
+
+        <a
+            href="//linkedin.com/in/brinsleyblackwood"
+            aria-label="LinkedIn"
+        >
+            <Icon name="mdi:linkedin">
+                <span class="sr-only">LinkedIn</span>
+            </Icon>
+        </a>
+    </div>
+</footer>
+
+<style define:vars={{ text, textHover, bgHover }}>
+    a {
+        color: var(--text);
+        cursor: pointer;
+        display: inline-flex;
+        justify-items: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    a:hover {
+        color: var(--textHover);
+        background-color: var(--bgHover);
+    }
+
+    a > svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+</style>

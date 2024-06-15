@@ -1,0 +1,148 @@
+---
+import Layout from "src/layouts/Layout.astro"
+import {
+    minChars,
+    maxChars,
+    processRequest,
+    validateContactForm,
+} from "../utils/contact"
+import { colors } from "../utils/tailwind"
+import { Icon } from "astro-icon/components"
+
+const textColor = colors.neutral[950]
+const backgroundColor = colors.neutral[50]
+const borderColor = colors.neutral[500]
+
+const inputs = [
+    {
+        Element: "input",
+        label: "Your email",
+        id: "email",
+        type: "email",
+        placeholder: "name@example.com",
+    },
+    {
+        Element: "input",
+        label: "Subject",
+        id: "subject",
+        type: "text",
+        placeholder: "Let me know how we can help you",
+        minLength: minChars,
+        maxLength: maxChars,
+    },
+    {
+        Element: "textarea",
+        label: "Your message",
+        id: "message",
+        placeholder: "Leave a comment...",
+        rows: 6,
+        minLength: minChars,
+        maxLength: maxChars,
+    },
+].map(data=>({
+    ...data,
+    name: data.id,
+    class: "bg-neutral-50 dark:bg-neutral-700 border-neutral-300 text-neutral-900 dark:text-white dark:placeholder-neutral-400",
+    required: true,
+}))
+
+let formState: ReturnType<typeof validateContactForm> = {} as never
+let success = false
+
+if (Astro.request.method === "POST") {
+    try {
+        const formData = await Astro.request.formData()
+
+        formState = validateContactForm(formData)
+
+        if (!formState.errors.length) {
+            await processRequest(formState.data)
+            success = true
+        }
+    } catch (error) {
+        console.error(error)
+        return Astro.redirect("/error")
+    }
+}
+---
+
+<Layout title="Contact | Brinsley Blackwood">
+    <section
+        class="h-full flex flex-col items-center justify-center bg-neutral-700 dark:bg-neutral-950 border-b border-neutral-600 text-neutral-200"
+    >
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            {
+                success ? (
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-success-100 dark:bg-success-900 p-2 flex items-center justify-center mx-auto mb-3.5">
+                            <Icon
+                                name="mdi:check"
+                                class="w-8 h-8 text-success-500 dark:text-success-400"
+                            />
+                            <span class="sr-only">Success</span>
+                        </div>
+                        <p class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                            Success
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">
+                            Get in touch
+                        </h2>
+
+                        <p class="mb-8 lg:mb-16 font-light text-center sm:text-xl">
+                            Interested in collaborating? Looking for advice?
+                            Just want to chat?
+                            <br />
+                            Drop me a line!
+                        </p>
+
+                        <form
+                            method="POST"
+                            class="space-y-8"
+                        >
+                            {inputs.map(({ Element, label, id, ...props }) => (
+                                <div>
+                                    <label for={id}>{label}</label>
+
+                                    {/* @ts-ignore */}
+                                    <Element {...props} />
+
+                                    {formState.errors?.includes(id) && (
+                                        <p class="text-error-500">
+                                            There's something wrong with this
+                                            field
+                                        </p>
+                                    )}
+                                </div>
+                            ))}
+
+                            <button
+                                class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            >
+                                Send message
+                            </button>
+                        </form>
+                    </>
+                )
+            }
+        </div>
+    </section>
+</Layout>
+
+<style define:vars={{ textColor, backgroundColor, borderColor }}>
+    input,
+    select,
+    textarea {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        width: 100%;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+</style>

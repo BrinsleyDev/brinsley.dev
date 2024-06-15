@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components"
+import { twJoin } from "tailwind-merge"
+
+type Props = {
+    title: string
+    items: string[]
+    icon: string
+    iconColor: string
+    iconBgColor: string
+    bulletColor: string
+}
+
+const { title, items, icon, iconColor, iconBgColor, bulletColor } = Astro.props
+---
+
+<div>
+    <div
+        class={twJoin(
+            "flex justify-center items-center mb-4 w-10 h-10 rounded lg:h-16 lg:w-16",
+            iconColor,
+            iconBgColor,
+        )}
+    >
+        <Icon
+            name={icon}
+            class="w-5 h-5 lg:w-8 lg:h-8"
+        />
+    </div>
+
+    <h3 class="mb-2 text-xl font-bold dark:text-white text-neutral-900">
+        {title}
+    </h3>
+
+    <ul
+        role="list"
+        class="my-6 lg:mb-0 space-y-4"
+    >
+        {
+            items.map((label) => (
+                <li
+                    class={twJoin(
+                        "flex text-lg space-x-2.5 items-center",
+                        bulletColor,
+                    )}
+                >
+                    <Icon name="mdi:check-circle" />
+
+                    <span class="leading-tight text-neutral-500 dark:text-neutral-400">
+                        {label}
+                    </span>
+                </li>
+            ))
+        }
+    </ul>
+</div>

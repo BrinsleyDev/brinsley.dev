@@ -1,0 +1,36 @@
+---
+import { twMerge } from "tailwind-merge"
+
+interface Props {
+    text: string
+    href: string
+    selected?: boolean
+    class?: string
+}
+
+const { text, href, selected, class: className } = Astro.props
+
+const classes = twMerge(
+    [
+        "px-4",
+        "py-2",
+        "rounded",
+        "cursor-pointer",
+        "text-neutral-400",
+        "hover:text-neutral-900",
+        "hover:bg-primary-200",
+        "dark:text-neutral-300",
+        "dark:hover:text-white",
+        "dark:hover:bg-neutral-900",
+        "transition-colors",
+    ],
+    selected && ["text-primary-400", "dark:text-primary-300"],
+    className,
+)
+---
+
+<a
+    href={href}
+    class={classes}
+    >{text}</a
+>

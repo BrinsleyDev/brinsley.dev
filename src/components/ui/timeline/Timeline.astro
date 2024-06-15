@@ -1,0 +1,50 @@
+---
+type Props = {
+    company: string
+    description: string
+    tags?: string[]
+    href?: string
+}
+
+const { company, description, tags, href } = Astro.props
+---
+
+<div>
+    <div
+        class="flex flex-wrap gap-4 items-center text-primary-500 dark:text-primary-300"
+    >
+        <h3 class="text-xl font-bold text-nowrap">{company}</h3>
+
+        {
+            !!href && (
+                <a
+                    class="text-sm border rounded-lg px-2 py-1 dark:border-primary-800"
+                    target="_blank"
+                    href={href}
+                >
+                    Website
+                </a>
+            )
+        }
+
+        <div class="flex flex-wrap gap-4">
+            {
+                tags?.map((value) => (
+                    <div class="text-sm text-nowrap border rounded-lg px-2 py-1 bg-neutral-100 dark:bg-neutral-900 dark:border-neutral-500">
+                        {value}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <p class="my-2 text-primary-400 dark:text-neutral-200">
+        {description}
+    </p>
+
+    <div
+        class="relative flex flex-col gap-8 mx-2 my-8 -pl-4 border-l border-neutral-300 dark:border-neutral-700"
+    >
+        <slot />
+    </div>
+</div>

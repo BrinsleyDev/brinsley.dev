@@ -1,0 +1,132 @@
+---
+import Checklist from "@components/ui/Checklist.astro"
+import dayjs from "dayjs"
+import Layout from "../layouts/Layout.astro"
+
+const careerSpan = dayjs().diff("2011-08-17", "year", true)
+const fullYears = Math.floor(careerSpan)
+
+const yearsOfExperience =
+    careerSpan - fullYears < 0.8 ? `${fullYears}+` : Math.ceil(careerSpan)
+---
+
+<Layout title="Brinsley Blackwood">
+    <main>
+        <section
+            class="text-neutral-900 dark:text-neutral-100 border-b border-neutral-500"
+        >
+            <div
+                class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+            >
+                <div class="m-auto place-self-center lg:col-span-7">
+                    <h1
+                        class="flex flex-wrap max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
+                    >
+                        <div>Software Engineer</div>
+                        <div class="opacity-50">Game Developer</div>
+                    </h1>
+
+                    <p
+                        class="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl opacity-90"
+                    >
+                        I'm a <b>full stack software engineer</b> with expertise
+                        throughout the entire Software Development Lifecycle; from
+                        requirements gathering, systems design and UI/UX design,
+                        through to implementation and deployment.
+                    </p>
+                </div>
+
+                <div class="hidden lg:mt-0 lg:col-span-4 lg:flex">
+                    <img
+                        class="rounded-xl"
+                        src="/ProfileImage.jpg"
+                        alt="profile"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="bg-primary-100 dark:bg-neutral-950 border-b border-neutral-500"
+        >
+            <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-8 lg:px-6">
+                <div class="max-w-screen-md mb-8 lg:mb-16">
+                    <h2
+                        class="mb-4 text-4xl tracking-tight font-extrabold text-neutral-900 dark:text-white"
+                    >
+                        Passionate. Creative. Dedicated.
+                    </h2>
+
+                    <p
+                        class="font-light text-neutral-900 dark:text-neutral-200 sm:text-xl"
+                    >
+                        In my <b>{yearsOfExperience} years</b> of experience as a
+                        Software Engineer, I've worn many hats and acquired a lot
+                        of knowledge and skills spanning various domains, and I like
+                        to think I've also picked up a little wisdom along the way
+                        too.
+                    </p>
+                </div>
+
+                <div
+                    class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 xl:gap-12 md:space-y-0"
+                >
+                    <Checklist
+                        title="Development"
+                        items={[
+                            "Design focused (UX)",
+                            "Full stack web/game development",
+                            "DevOps: CI/CD, Infrastructure As Code",
+                            "System architecture",
+                            "Technical communication",
+                            "Avid learner",
+                        ]}
+                        icon="mdi:code"
+                        bulletColor="text-primary-500 dark:text-primary-500"
+                        iconColor="text-primary-600 dark:text-primary-300"
+                        iconBgColor="bg-primary-200 dark:bg-primary-900"
+                        iconBgColor="bg-primary-200 dark:bg-primary-900"
+                    />
+
+                    <Checklist
+                        title="Team Leadership"
+                        items={[
+                            "Highly collaborative",
+                            "Fostering no-blame culture",
+                            "Mentorship tailored to the individual",
+                            "Team building",
+                            "Skill building",
+                            "Line management",
+                        ]}
+                        icon="ri:team-fill"
+                        bulletColor="text-primary-500 dark:text-primary-500"
+                        iconColor="text-primary-600 dark:text-primary-300"
+                        iconBgColor="bg-primary-200 dark:bg-primary-900"
+                    />
+
+                    <Checklist
+                        title="Technical Leadership"
+                        items={[
+                            "Strategic planning",
+                            "Goal setting",
+                            "Technology assessment",
+                            "Software architecture",
+                            "Prototyping",
+                            "Process refinement",
+                        ]}
+                        icon="tabler:rosette-discount-check-filled"
+                        bulletColor="text-primary-500 dark:text-primary-500"
+                        iconColor="text-primary-600 dark:text-primary-300"
+                        iconBgColor="bg-primary-200 dark:bg-primary-900"
+                    />
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    b {
+        font-weight: bold;
+    }
+</style>
